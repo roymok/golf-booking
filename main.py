@@ -32,7 +32,7 @@ class Browser:
         self.driver.quit()
 
 
-class GolfBooking(Browser):
+class KscGolfBooking(Browser):
     def __init__(self):
         super().__init__()
         self.goto("https://booking.kscgolf.org.hk/login")
@@ -69,7 +69,7 @@ def next_nth_day(n=1):
 
 
 if __name__ == '__main__':
-    gb = GolfBooking()
+    gb = KscGolfBooking()
     gb.login('tommy9763@gmail.com', 'shrimpeko')
     resv_day = next_nth_day(7)
     gb.pick_last_day()
