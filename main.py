@@ -22,7 +22,11 @@ class Browser:
         self.driver.find_element_by_class_name(class_name).click()
 
     def check_elem_exist(self, name):
-        return self.driver.find_element_by_xpath(f"//*[text()='{name}']")
+        elem = False
+        try:
+            elem = self.driver.find_element_by_xpath(f"//*[text()='{name}']")
+        finally:
+            return elem
 
     def quit(self):
         self.driver.quit()
