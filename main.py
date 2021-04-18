@@ -24,6 +24,9 @@ class Browser:
     def check_elem_exist(self, name):
         return self.driver.find_element_by_xpath(f"//*[text()='{name}']")
 
+    def quit(self):
+        self.driver.quit()
+
 
 class GolfBooking(Browser):
     def __init__(self):
@@ -46,7 +49,7 @@ class GolfBooking(Browser):
 
     def pick_last_day(self):
         options = self.driver.find_elements_by_class_name('filterOptsBtn')
-        options[6].click()
+        options[6].click() if len(options) > 0 else None
         time.sleep(0.3)
         self.go_next()
 
@@ -66,4 +69,5 @@ if __name__ == '__main__':
     gb.login('tommy9763@gmail.com', 'shrimpeko')
     resv_day = next_nth_day(7)
     gb.pick_last_day()
+    gb.quit()
 
